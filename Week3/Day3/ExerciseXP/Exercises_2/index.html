@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    p {
+      background: yellow;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+  <button id="clear">Clear Interval</button>
+
+  <script>
+    function printHello() {
+      alert("Hello World");
+    }
+
+    setTimeout(printHello, 2000);
+
+
+    function addParagraph() {
+      const container = document.getElementById("container");
+
+      const paragraph = document.createElement("p");
+      paragraph.innerText = "Hello World";
+
+      container.appendChild(paragraph);
+    }
+
+    setTimeout(addParagraph, 2000);
+
+
+    const interval = setInterval(function () {
+
+      const container = document.getElementById("container");
+
+      const paragraph = document.createElement("p");
+      paragraph.innerText = "Hello World";
+
+      container.appendChild(paragraph);
+
+      if (container.children.length >= 5) {
+        clearInterval(interval);
+      }
+
+    }, 2000);
+
+
+    const button = document.getElementById("clear");
+
+    button.addEventListener("click", function () {
+      clearInterval(interval);
+    });
+
+  </script>
+</body>
+</html>
