@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TASK 1</title>
+  </head>
+  <body>
+    <article id="article">
+      <h1 id="header1">Some Facts</h1>
+      <h2 id="header2">The Chocolate</h2>
+      <h3 id="header3">History of the chocolate</h3>
+      <p>
+        Chocolate is made from tropical Theobroma cacao tree seeds. Its earliest
+        use dates back to the Olmec civilization in Mesoamerica.
+      </p>
+      <p>
+        After the European discovery of the Americas, chocolate became very
+        popular in the wider world, and its demand exploded.
+      </p>
+      <p>
+        Chocolate has since become a popular food product that millions enjoy
+        every day, thanks to its unique, rich, and sweet taste.
+      </p>
+      <p>But what effect does eating chocolate have on our health?</p>
+    </article>
+    <script>
+      //1
+      console.log(document.getElementById("header1"));
+
+      //2
+      let article = document.querySelector("article");
+      let last = article.lastElementChild;
+      last.remove();
+
+      //3
+      const textElement = document.getElementById("header2");
+
+      textElement.addEventListener("click", function () {
+        textElement.style.color = "red";
+      });
+
+      //4
+      const element = document.getElementById("header3");
+
+      element.addEventListener("click", function () {
+        element.style.display = "none";
+      });
+
+      //5
+      const but = document.createElement("button");
+      const tex = document.createTextNode("button");
+      but.appendChild(tex);
+      document.getElementById("article").appendChild(but);
+
+      but.addEventListener("click", function () {
+        article = document.getElementById("article");
+        article.style.fontWeight = "bold";
+      });
+
+      //6
+      const headerEl = document.getElementById("header1");
+
+      headerEl.addEventListener("mouseover", function () {
+        const textSize = Math.floor(Math.random() * 100) + 1;
+        headerEl.style.fontSize = textSize + "px";
+      });
+
+      //7
+      const secondParagraph = document.querySelectorAll("#article p")[1];
+
+      secondParagraph.addEventListener("mouseover", () => {
+        secondParagraph.classList.add("fade-out");
+      });
+    </script>
+    <style>
+      .fade-out {
+        animation: fadeOut 1s forwards;
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
+  </body>
+</html>

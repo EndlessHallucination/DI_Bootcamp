@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users Form</title>
+  </head>
+
+  <body>
+    <form id="userForm">
+      <label for="fname">First name:</label><br />
+      <input type="text" id="fname" name="firstname" /><br />
+
+      <label for="lname">Last name:</label><br />
+      <input type="text" id="lname" name="lastname" /><br /><br />
+
+      <input type="submit" value="Submit" id="submit" />
+    </form>
+
+    <ul class="usersAnswer"></ul>
+
+    <script>
+      //1
+      const form = document.getElementById("userForm");
+      console.log(form);
+
+      //2
+      const firstNameInput = document.getElementById("fname");
+      const lastNameInput = document.getElementById("lname");
+
+      console.log(firstNameInput);
+      console.log(lastNameInput);
+
+      //3
+      console.log(firstNameInput.name);
+      console.log(lastNameInput.name);
+
+      //4
+      const usersAnswer = document.querySelector(".usersAnswer");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const firstName = firstNameInput.value;
+        const lastName = lastNameInput.value;
+
+        if (firstName !== "" && lastName !== "") {
+          const firstLi = document.createElement("li");
+          const lastLi = document.createElement("li");
+
+          firstLi.textContent = firstName;
+          lastLi.textContent = lastName;
+
+          usersAnswer.appendChild(firstLi);
+          usersAnswer.appendChild(lastLi);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -9,7 +9,7 @@ const allBooks = [
         title: "The Hobbit",
         author: "J.R.R. Tolkien",
         image: "https://example.com/hobbit.jpg",
-        alreadyRead: true
+        alreadyRead:     true
     }
 ];
 
