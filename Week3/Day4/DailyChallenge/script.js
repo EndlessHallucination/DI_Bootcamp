@@ -1,7 +1,7 @@
 const tasks = [];
-
 const input = document.getElementById("input");
 const list = document.querySelector(".listTasks");
+
 
 function addTask(event) {
   event.preventDefault();
