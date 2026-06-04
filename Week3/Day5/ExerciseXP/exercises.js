@@ -91,3 +91,19 @@ console.log(kilogramsToGramsArrow(4));
 
 //EXERCISE 7
 
+(function (userName) {
+  const userDiv = document.createElement("div");
+  userDiv.classList.add("user-info");
+
+  const name = document.createElement("span");
+  name.textContent = userName;
+
+  const image = document.createElement("img");
+  image.src = "https://i.pravatar.cc/40";
+  image.alt = "Profile Picture";
+
+  userDiv.appendChild(name);
+  userDiv.appendChild(image);
+
+  document.getElementById("navbar").appendChild(userDiv);
+})("John");
