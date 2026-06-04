@@ -107,3 +107,28 @@ console.log(kilogramsToGramsArrow(4));
 
   document.getElementById("navbar").appendChild(userDiv);
 })("John");
+
+//EXERCISE 8
+
+function makeJuice(size) {
+  let ingredients = [];
+
+  function addIngredients(i1, i2, i3) {
+    ingredients.push(i1, i2, i3);
+  }
+
+  function displayJuice() {
+    let p = document.createElement("p");
+
+    p.innerText = `The client wants a ${size} juice, containing ${ingredients.join(", ")}`;
+
+    document.body.appendChild(p);
+  }
+
+  addIngredients("cucumber", "pineapple", "tomato");
+  addIngredients("apple", "orange", "mango");
+
+  displayJuice();
+}
+
+makeJuice("large");
