@@ -1,4 +1,4 @@
-let client = "John";
+let client = "Johnn";
 
 const groceries = {
   fruits: ["pear", "apple", "banana"],
