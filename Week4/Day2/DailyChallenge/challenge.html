@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Video {
+        constructor(title, uploader, time) {
+          this.title = title;
+          this.uploader = uploader;
+          this.time = time;
+        }
+
+        watch() {
+          console.log(`${this.uploader} watched all ${this.time} seconds of ${this.title}!`);
+        }
+      }
+      const videos = [
+        new Video("funny drunk people fail", "anonymous", 10),
+        new Video("funny drunk people fail #2", "FUnny channel", 30),
+        new Video("funny drunk people fail #3", "FUnny channel1", 350),
+        new Video("funny drunk people fail #4", "FUnny channel2", 320),
+        new Video("funny drunk people fail #5", "FUnny channel3", 330),
+      ];
+
+      videos.forEach((video) => {
+        video.watch();
+      });
+    </script>
+  </body>
+</html>
