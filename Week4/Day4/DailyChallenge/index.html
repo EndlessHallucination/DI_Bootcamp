@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- #1 -->
+    <form id="myform" name="my" action="index.html" method="GET">
+      <label for="username">Username</label>
+      <input type="text" name="username" value="" />
+      <label for="text">Comments</label>
+      <input type="text" name="comments" value="" />
+      <input type="submit" value="Submit" />
+      <!-- Where will the sent data appear?: Data appears in the address line -->
+    </form>
+
+    <!-- 2 -->
+    <form id="myform" name="my" action="index.html" method="POST">
+      <label for="username">Username</label>
+      <input type="text" name="username" value="" />
+      <label for="text">Comments</label>
+      <input type="text" name="comments" value="" />
+      <input type="submit" value="Submit" />
+      <!-- Where will the sent data appear?: Data appears in Network => 'filename'.html => Payload-->
+
+      <script>
+        //#3
+        const marioGame = {
+          detail: "An amazing game!",
+          characters: {
+            mario: {
+              description: "Small and jumpy. Likes princesses.",
+              height: 10,
+              weight: 3,
+              speed: 12,
+            },
+            bowser: {
+              description: "Big and green, Hates princesses.",
+              height: 16,
+              weight: 6,
+              speed: 4,
+            },
+            princessPeach: {
+              description: "Beautiful princess.",
+              height: 12,
+              weight: 2,
+              speed: 2,
+            },
+          },
+        };
+
+        // Convert to JSON
+
+        const marioGameJSON = JSON.stringify(marioGame);
+        console.log(marioGameJSON);
+
+        //Pretty-Print JSON
+
+        const prettyMarioGameJSON = JSON.stringify(marioGame, null, 2);
+        console.log(prettyMarioGameJSON);
+
+        // The nested objects (mario, bowser, and princessPeach) are preserved in the JSON structure.
+        // They become nested JSON objects inside the "characters" object.
+        // The hierarchy remains exactly the same; only the syntax changes:
+        // Property names are wrapped in double quotes.
+        // Strings use double quotes.
+        // The object is converted into a JSON string.
+      </script>
+    </form>
+  </body>
+</html>
