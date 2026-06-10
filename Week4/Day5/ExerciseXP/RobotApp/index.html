@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Robo Friends</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+
+    #search {
+      padding: 10px;
+      width: 300px;
+      margin: 20px;
+      font-size: 16px;
+    }
+
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      width: 220px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Robo Friends</h1>
+
+  <input
+    type="text"
+    id="search"
+    placeholder="Search robots..."
+  >
+
+  <div id="container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
