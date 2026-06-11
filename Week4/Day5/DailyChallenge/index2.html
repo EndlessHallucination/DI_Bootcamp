@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const morse = `{
+          "0": "-----",
+          "1": ".----",
+          "2": "..---",
+          "3": "...--",
+          "4": "....-",
+          "5": ".....",
+          "6": "-....",
+          "7": "--...",
+          "8": "---..",
+          "9": "----.",
+          "a": ".-",
+          "b": "-...",
+          "c": "-.-.",
+          "d": "-..",
+          "e": ".",
+          "f": "..-.",
+          "g": "--.",
+          "h": "....",
+          "i": "..",
+          "j": ".---",
+          "k": "-.-",
+          "l": ".-..",
+          "m": "--",
+          "n": "-.",
+          "o": "---",
+          "p": ".--.",
+          "q": "--.-",
+          "r": ".-.",
+          "s": "...",
+          "t": "-",
+          "u": "..-",
+          "v": "...-",
+          "w": ".--",
+          "x": "-..-",
+          "y": "-.--",
+          "z": "--..",
+          ".": ".-.-.-",
+          ",": "--..--",
+          "?": "..--..",
+          "!": "-.-.--",
+          "-": "-....-",
+          "/": "-..-.",
+          "@": ".--.-.",
+          "(": "-.--.",
+          ")": "-.--.-"
+        }`;
+      function toJs() {
+        return new Promise((resolve, reject) => {
+          const obj = JSON.parse(morse);
+          if ((obj.length = 0)) {
+            reject("error");
+          } else {
+            resolve(obj);
+          }
+        });
+      }
+
+      function toMorse(morseJS) {
+        return new Promise((resolve, reject) => {
+          const userInput = prompt("Please enter a word or a sentence:");
+
+          const chars = userInput.toLowerCase().split("");
+
+          const morseTranslation = [];
+
+          for (const char of chars) {
+            if (morseJS[char] === undefined) {
+              reject(
+                `Character "${char}" doesn't exist in the Morse dictionary`,
+              );
+              return;
+            }
+
+            morseTranslation.push(morseJS[char]);
+          }
+
+          resolve(morseTranslation);
+        });
+      }
+
+      function joinWords(morseTranslation) {
+        document.body.innerHTML = morseTranslation.join("<br>");
+      }
+
+      toJs()
+        .then(toMorse)
+        .then(joinWords)
+        .catch((error) => {
+          document.body.innerHTML = error;
+        });
+    </script>
+  </body>
+</html>
