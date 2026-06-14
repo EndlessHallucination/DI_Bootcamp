@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <label for="theme">Enter your theme: </label>
+      <input type="text" id="theme" name="theme" required />
+      <button type="submit">Get The Result</button>
+    </form>
+    <script>
+      const form = document.getElementById("form");
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const themeValue = formData.get("theme");
+
+        const url = `https://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(themeValue)}&limit=10&rating=g&api_key=hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My`;
+
+        try {
+          const response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error(`Status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          console.log("Giphy API Response:", data);
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    </script>
+  </body>
+</html>
