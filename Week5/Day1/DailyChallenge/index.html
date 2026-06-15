@@ -1,41 +1,81 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form id="form">
-      <label for="theme">Enter your theme: </label>
-      <input type="text" id="theme" name="theme" required />
-      <button type="submit">Get The Result</button>
-    </form>
-    <script>
-      const form = document.getElementById("form");
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Giphy Generator</title>
+</head>
+<body>
 
-      form.addEventListener("submit", async function (event) {
-        event.preventDefault();
+  <form id="form">
+    <label for="theme">Enter category:</label>
+    <input type="text" id="theme" name="theme" required>
+    <button type="submit">Get GIF</button>
+  </form>
 
-        const formData = new FormData(form);
-        const themeValue = formData.get("theme");
+  <button id="deleteAll">DELETE ALL</button>
 
-        const url = `https://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(themeValue)}&limit=10&rating=g&api_key=hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My`;
+  <div id="gifContainer"></div>
 
-        try {
-          const response = await fetch(url);
+  <script>
+    const form = document.getElementById("form");
+    const gifContainer = document.getElementById("gifContainer");
+    const deleteAllBtn = document.getElementById("deleteAll");
 
-          if (!response.ok) {
-            throw new Error(`Status: ${response.status}`);
-          }
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
 
-          const data = await response.json();
+      const formData = new FormData(form);
+      const category = formData.get("theme");
 
-          console.log("Giphy API Response:", data);
-        } catch (error) {
-          console.error(error);
+      const url = `https://api.giphy.com/v1/gifs/random?api_key=hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My&tag=${encodeURIComponent(category)}`;
+
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Status: ${response.status}`);
         }
-      });
-    </script>
-  </body>
+
+        const data = await response.json();
+
+        // URL of the gif
+        const gifUrl = data.data.images.original.url;
+
+        // Create wrapper
+        const gifDiv = document.createElement("div");
+
+        // Create image
+        const img = document.createElement("img");
+        img.src = gifUrl;
+        img.alt = category;
+
+        // Create delete button
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "DELETE";
+
+        deleteBtn.addEventListener("click", () => {
+          gifDiv.remove();
+        });
+
+        // Append elements
+        gifDiv.appendChild(img);
+        gifDiv.appendChild(deleteBtn);
+
+        gifContainer.appendChild(gifDiv);
+
+        form.reset();
+
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+    // Delete all GIFs
+    deleteAllBtn.addEventListener("click", () => {
+      gifContainer.innerHTML = "";
+    });
+  </script>
+
+</body>
 </html>
