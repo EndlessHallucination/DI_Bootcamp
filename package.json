@@ -2,5 +2,6 @@
   "dependencies": {
     "prompt-sync": "^4.2.0",
     "typescript": "^6.0.3"
-  }
+  },
+  "type": "module"
 }
