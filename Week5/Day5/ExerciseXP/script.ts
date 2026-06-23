@@ -79,4 +79,3 @@ function formatInput<T extends { toString(): string }>(input: T): string {
 
     return formatted;
 }
-
