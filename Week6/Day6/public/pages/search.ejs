@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<%- include("../partials/head") %>
+
+<body>
+
+<%- include("../partials/header") %>
+
+<div class="container">
+
+    <h2>Search By Title</h2>
+
+    <form action="/search/title" method="POST">
+
+        <input
+            type="text"
+            name="title"
+            class="form-control mb-2">
+
+        <button class="btn btn-primary">
+            Search
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h2>Search By Category</h2>
+
+    <form action="/search/category" method="POST">
+
+        <select
+            name="category"
+            class="form-select mb-2">
+
+            <option value="Animals">
+                Animals
+            </option>
+
+            <option value="History">
+                History
+            </option>
+
+            <option value="Science">
+                Science
+            </option>
+
+        </select>
+
+        <button class="btn btn-success">
+            Search
+        </button>
+
+    </form>
+
+</div>
+
+<%- include("../partials/posts") %>
+
+<%- include("../partials/footer") %>
+
+</body>
+</html>

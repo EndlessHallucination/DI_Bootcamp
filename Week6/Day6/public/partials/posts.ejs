@@ -1,0 +1,36 @@
+<div class="container">
+
+    <% posts.forEach(post => { %>
+
+        <div class="post">
+
+            <h3>
+                <a href="<%= post.link %>" target="_blank">
+                    <%= post.title %>
+                </a>
+            </h3>
+
+            <p>
+                <strong>Date:</strong>
+                <%= post.pubDate %>
+            </p>
+
+            <p>
+                <strong>Creator:</strong>
+                <%= post.creator || "Unknown" %>
+            </p>
+
+            <p>
+                <strong>Categories:</strong>
+                <%= post.categories ? post.categories.join(", ") : "" %>
+            </p>
+
+            <div>
+                <%- post.contentSnippet || "" %>
+            </div>
+
+        </div>
+
+    <% }) %>
+
+</div>
