@@ -2,24 +2,39 @@
 <html>
   <body>
     <form id="form">
-      <input placeholder="Name" required />
-      <input placeholder="Last Name" required />
-      <input placeholder="Email" required />
-      <input placeholder="Username" required />
-      <input type="password" placeholder="Password" required />
-
+      <input name="name" />
+      <input name="lastName" />
+      <input name="email" />
+      <input name="username" />
+      <input name="password" type="password" />
       <button disabled>Register</button>
     </form>
 
     <script>
       const form = document.querySelector("form");
-      const inputs = document.querySelectorAll("input");
-      const btn = document.querySelector("button");
 
-      inputs.forEach((input) => {
-        input.addEventListener("input", () => {
-          btn.disabled = [...inputs].some((i) => !i.value);
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const body = {
+          name: form.name.value,
+          lastName: form.lastName.value,
+          email: form.email.value,
+          username: form.username.value,
+          password: form.password.value,
+        };
+
+        const res = await fetch("/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
         });
+
+        const data = await res.json();
+
+        alert(data.message);
       });
     </script>
   </body>
