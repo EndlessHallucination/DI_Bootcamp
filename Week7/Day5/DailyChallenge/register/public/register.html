@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <body>
+    <form id="form">
+      <input placeholder="Name" required />
+      <input placeholder="Last Name" required />
+      <input placeholder="Email" required />
+      <input placeholder="Username" required />
+      <input type="password" placeholder="Password" required />
+
+      <button disabled>Register</button>
+    </form>
+
+    <script>
+      const form = document.querySelector("form");
+      const inputs = document.querySelectorAll("input");
+      const btn = document.querySelector("button");
+
+      inputs.forEach((input) => {
+        input.addEventListener("input", () => {
+          btn.disabled = [...inputs].some((i) => !i.value);
+        });
+      });
+    </script>
+  </body>
+</html>
