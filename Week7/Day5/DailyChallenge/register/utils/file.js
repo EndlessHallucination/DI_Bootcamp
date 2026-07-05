@@ -8,7 +8,7 @@ async function readUsers() {
 }
 
 async function writeUsers(users) {
-  fs.writeFile(FILE, JSON.stringify(users, null, 2));
+  await fs.writeFile(FILE, JSON.stringify(users, null, 2));
 }
 
 module.exports = {

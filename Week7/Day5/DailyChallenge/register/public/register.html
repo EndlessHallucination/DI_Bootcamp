@@ -7,11 +7,23 @@
       <input name="email" />
       <input name="username" />
       <input name="password" type="password" />
+
       <button disabled>Register</button>
     </form>
 
     <script>
       const form = document.querySelector("form");
+      const button = form.querySelector("button");
+
+      function validateForm() {
+        const filled = [...form.querySelectorAll("input")].every(
+          (input) => input.value.trim() !== "",
+        );
+
+        button.disabled = !filled;
+      }
+
+      form.addEventListener("input", validateForm);
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();

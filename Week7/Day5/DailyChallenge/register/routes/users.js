@@ -18,16 +18,15 @@ router.post("/register", async (req, res) => {
 
     const users = await readUsers();
 
-    const exists = users.find(
-      (u) => u.username === username || u.password === password,
-    );
+    const exists = users.find((u) => u.username === username);
 
-    if (exists)
+    if (exists) {
       return res.json({
-        message: "Username or password already exists",
+        message: "Username already exists",
       });
+    }
 
-    const hash = bcrypt.hash(password, 10);
+    const hash = await bcrypt.hash(password, 10);
 
     const newUser = {
       id: Date.now(),
@@ -53,27 +52,33 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  try {
+    const { username, password } = req.body;
 
-  const users = await readUsers();
+    const users = await readUsers();
 
-  const user = users.find((u) => u.username === username);
+    const user = users.find((u) => u.username === username);
 
-  if (!user)
-    return res.status(401).json({
-      message: "User not found",
+    if (!user)
+      return res.status(401).json({
+        message: "User not found",
+      });
+
+    const match = await bcrypt.compare(password, user.password);
+
+    if (!match)
+      return res.status(401).json({
+        message: "Incorrect password",
+      });
+
+    res.json({
+      message: "Login successful",
     });
-
-  const match = await bcrypt.compare(password, user.password);
-
-  if (!match)
-    return res.status(401).json({
-      message: "Incorrect password",
+  } catch (err) {
+    res.status(500).json({
+      message: "Server error",
     });
-
-  res.json({
-    message: "Login successful",
-  });
+  }
 });
 
 router.get("/users", async (req, res) => {
