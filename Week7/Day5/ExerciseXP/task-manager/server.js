@@ -1,9 +1,10 @@
 const express = require("express");
-const taskRouter = "./routes/tasks";
+const taskRouter = require("./routes/tasks");
 
 const app = express();
 
 app.use(express.json());
+
 app.use("/tasks", taskRouter);
 
 app.listen(3000, () => {
