@@ -1,0 +1,20 @@
+.App {
+  width: 400px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+.language {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
