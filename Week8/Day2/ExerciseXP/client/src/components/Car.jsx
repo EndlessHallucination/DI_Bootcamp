@@ -1,0 +1,18 @@
+import { useState } from "react";
+import Garage from "./Garage";
+
+function Car({ model }) {
+    const [color] = useState("Red");
+
+    return (
+        <div>
+            <h2>
+                This car is {color} {model}
+            </h2>
+
+            <Garage size="small" />
+        </div>
+    );
+}
+
+export default Car;
