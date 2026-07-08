@@ -1,0 +1,21 @@
+{
+  "SocialMedias": ["Facebook", "Twitter", "Instagram"],
+
+  "Skills": {
+    "Frontend": ["HTML", "CSS", "JavaScript", "React"],
+    "Backend": ["NodeJS", "Express"]
+  },
+
+  "Experiences": [
+    {
+      "company": "Google",
+      "position": "Developer",
+      "years": "2021-2023"
+    },
+    {
+      "company": "Microsoft",
+      "position": "Frontend",
+      "years": "2023-Present"
+    }
+  ]
+}
